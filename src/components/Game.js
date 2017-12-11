@@ -1,48 +1,26 @@
 //@flow
 
 import React, {Component} from 'react'
-import {TetrisBlock} from './TetrisBlock/TetrisBlock'
-import {Board} from './Board/Board'
-import {Block} from './Block/Block'
-import {Controls} from './Controls'
-import {Score} from './Score'
-import {Settings} from './Settings'
+import TetrisBlock from './TetrisBlock/TetrisBlock'
+import Board from './Board/Board'
+import Block from './Block/Block'
+import Controls from './Controls'
+import Score from './Score'
+import Settings from './Settings'
 import {createMatrix, rotateMatrix} from './Helper'
-import TetrisBlockModel from '../../models/TetrisBlockModel'
-
-type Props = {
-  settings: typeof settings
-}
-type State = {
-  boardMatrix: number[][],
-  tetrisblockArray: number[],
-  tetrisblock: TetrisBlockModel,
-  intervalId: number,
-  intervalTime: number,
-  paused: boolean,
-  points: number,
-  completedLines: number,
-  level: number,
-  rotationAngle: number,
-  tetrisblockMatrix: number[][],
-  animation: boolean,
-}
+import TetrisBlockModel from '../models/TetrisBlockModel'
 
 class Tetris extends Component {
-  boardMatrix: number[][]
-  settings: typeof settings
-  tetrisblockColors: string[]
-  state: State
-  constructor(props:Props) {
+  constructor(props) {
     super(props)
-    this.settings = Object.assign({}, settings, props.settings)
+    this.settings = Object.assign({}, Settings, props.settings)
     this.handleKeyboard()
     const tetrisblock = new TetrisBlockModel(3, 0, Math.random() * 7 | 0)
     this.state = {
       boardMatrix: this.initializeBoard(),
       tetrisblockArray: this.initializeTetrisBlockArray(),
       tetrisblock: tetrisblock,
-      tetrominoMatrix: tetromino.matrix,
+      tetrisblockMatrix: tetrisblock.matrix,
       intervalId: 0,
       intervalTime: this.settings.intervalTimeInMiliSeconds,
       paused: false,
@@ -63,17 +41,13 @@ class Tetris extends Component {
   // Create random array of game pieces 
   initializeTetrisBlockArray = () => {
     const numberOfTetrisBlocks = TetrisBlockModel.getNumberOfTetrisBlocks()
-    const tetrisblockArray = new Array(numberOfTetrominoes)
+    const tetrisblockArray = new Array(numberOfTetrisBlocks)
       .fill(null)
       .map(spot => Math.random() * numberOfTetrisBlocks | 0)
-
     return tetrisblockArray
-
-
-
   }
 
-  getStartPoint = (matrix:number[][]) : {row: number, column: number} => {
+  getStartPoint = (matrix) => {
     let finalRow = 0, finalColumn = 0
     for (let rowIndex = 0; rowIndex < matrix.length; rowIndex++) {
       const row = matrix[rowIndex]
@@ -85,9 +59,9 @@ class Tetris extends Component {
       }
     }
     return { row: 0, column: 0 }
-
   }
-  getNewTetrisBlock = () : TetrisBlockModel => {
+
+  getNewTetrisBlock = () => {
     const {tetrisblockArray} = this.state
     const tetrisblockIndex = tetrisblockArray.shift()
     const startPoint = this.getStartPoint(TetrisBlockModel.getTetrisBlockArray()[tetrisblockIndex])
@@ -98,8 +72,8 @@ class Tetris extends Component {
 
     return newTetrisBlock
   }
-  getFreeBottomRow = (): number => {
-    const tetromino: TetrisBlockModel = Object.assign(new TetrisBlockModel(), this.state.tetrisblock)
+  getFreeBottomRow = () => {
+    const tetrisblock = Object.assign(new TetrisBlockModel(), this.state.tetrisblock)
     const initialRow = tetrisblock.row
     tetrisblock.row++
     while (!tetrisblock.collidesWith(this.state.boardMatrix)) {
@@ -108,8 +82,9 @@ class Tetris extends Component {
     const result = tetrisblock.row - initialRow - 1
     return result
   }
-  moveTetrisblock = (direction: 'DOWN' | 'LEFT' | 'RIGHT' | 'BOTTOM'): void => {
-    let tetrisblock = Object.assign(new TetrisBlcokModel(), this.state.tetrisblock)
+
+  moveTetrisBlock = (direction) => {
+    let tetrisblock = Object.assign(new TetrisBlockModel(), this.state.tetrisblock)
     tetrisblock.collidesWith.bind(tetrisblock)
     let rowAdvance = 0, columnAdvance = 0
     let mustUpdate = true
@@ -173,7 +148,7 @@ class Tetris extends Component {
     //restores animation
     this.setState({tetrisblock, rotationAngle, animation: true})
   }
-  handleClick = (event: Event, index: {column: number, row: number}) => {
+  handleClick = (event, index) => {
     const newBoard = this.state.boardMatrix.slice()
     const content = newBoard[index.row][index.column] !== 0
       ? [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -183,12 +158,11 @@ class Tetris extends Component {
       {
         boardMatrix: newBoard
       })
-
   }
 
   handleKeyboard = () => {
     window.addEventListener('keydown', e => {
-      const key = settings.keys
+      const key = Settings.keys
       //if e.keyCode is not one of the keys that operates Tetris Blocks, returns
       if (!Object.values(key).includes(e.keyCode)) return
 
@@ -217,7 +191,7 @@ class Tetris extends Component {
     })
   }
 
-  completedLines = (): number[] => {
+  completedLines = () => {
     const linesArray = []
     this.state.boardMatrix.forEach((row, rowIndex) =>
       (row.some(column =>
@@ -228,7 +202,7 @@ class Tetris extends Component {
     return linesArray
   }
 
-  clearCompletedLines = (completedLines: number[]) => {
+  clearCompletedLines = (completedLines) => {
     const newBoard = this.state.boardMatrix.slice()
     for (let completedLine of completedLines) {
       newBoard.splice(completedLine, 1)
@@ -261,14 +235,14 @@ class Tetris extends Component {
     this.setState({ boardMatrix, animation: false })
   }
 
-  updatePoints = (completedLines: number) => {
+  updatePoints = (completedLines) => {
     let {points} = this.state
     let extraPoints = 0
     for (let i = 0; i < completedLines; i++) {
       extraPoints += (i * 200)
     }
     points += extraPoints + this.settings.pointsPerLine * completedLines
-    this.setState((prevState: State) => ({ points, completedLines: prevState.completedLines + completedLines }))
+    this.setState((prevState) => ({ points, completedLines: prevState.completedLines + completedLines }))
   }
 
   renderBoard = () => {
@@ -302,7 +276,7 @@ class Tetris extends Component {
     const intervalDecrement = this.state.intervalTime <= 500
       ? 0
       : 100
-    this.setState((prev: State) => ({ intervalTime: prev.intervalTime - intervalDecrement }))
+    this.setState((prev) => ({ intervalTime: prev.intervalTime - intervalDecrement }))
   }
 
   mainLoop = () => {
@@ -332,7 +306,7 @@ class Tetris extends Component {
 
   renderScore = () => {
     return (
-      <div style={{ color: 'white' }}>
+      <div style={{ color: 'black' }}>
         <div>{this.state.intervalTime}</div>
         <div>PAUSED: {this.state.paused ? ' true' : ' false'}</div>
         <div>POINTS: {this.state.points}</div>

@@ -1,35 +1,35 @@
 //@flow
 
-type Settings = {
-    blockSize: number,
-    tetrominoesColors: [],
-    blockBorderColors:[],
-    boardColor: string,
-    rows: number,
-    columns: number,
-    offset: number,
-    keys: {
-      left: number,
-      right: number,
-      down: number,
-      bottom:number,
-      rotate: number,
-      pause: number
-    },
-    blockBorderColor: string,
-    blockBorderWidth:number,
-    blockBorderRadius:number | string,
-    intervalTimeInMiliSeconds: number,
-    pointsPerLine:number,
-    animation:boolean,
-    blockOutline:number,
-    boardBorderColor:string,
-    buttonsBackgroundColor:string,
-    buttonsColor:string,
-  }
-const settings: Settings = {
+// type Settings = {
+//     blockSize: number,
+//     tetrominoesColors: [],
+//     blockBorderColors:[],
+//     boardColor: string,
+//     rows: number,
+//     columns: number,
+//     offset: number,
+//     keys: {
+//       left: number,
+//       right: number,
+//       down: number,
+//       bottom:number,
+//       rotate: number,
+//       pause: number
+//     },
+//     blockBorderColor: string,
+//     blockBorderWidth:number,
+//     blockBorderRadius:number | string,
+//     intervalTimeInMiliSeconds: number,
+//     pointsPerLine:number,
+//     animation:boolean,
+//     blockOutline:number,
+//     boardBorderColor:string,
+//     buttonsBackgroundColor:string,
+//     buttonsColor:string,
+//   }
+const Settings = {
     blockSize: 30,
-    tetrominoesColors: [
+    tetrisblockColors: [
       '#FF0D72',
       '#0DC2FF',
       '#0DFF72',
@@ -47,7 +47,7 @@ const settings: Settings = {
       '#6b5c07',
       '#034767',
     ],
-    boardColor: 'white',
+    boardColor: 'black',
     rows: 20,
     columns: 10,
     offset: 1.1,

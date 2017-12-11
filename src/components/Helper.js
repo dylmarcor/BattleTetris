@@ -5,9 +5,9 @@ import _ from 'lodash'
 const transpose = matrix => _.unzip(matrix)
 const reverse = matrix => _.cloneDeep(matrix).reverse()
 
-type Rotation = 'LEFT' | 'RIGHT'
+let Rotation = 'LEFT' | 'RIGHT'
 // returns a new Matrix and the original matrix is not mutated 
-const rotateMatrix = (matrix: number[][], rotation: Rotation):number [][] => {
+export const rotateMatrix = (matrix: number[][], rotation: Rotation):number [][] => {
   let transposedMatrix:number[][] = transpose(matrix)
   return rotation === 'LEFT'
     ? reverse(transposedMatrix)
@@ -15,7 +15,7 @@ const rotateMatrix = (matrix: number[][], rotation: Rotation):number [][] => {
 }
 
 // creates an Array of Arrays (rows*columns) filled with value or with 0
-const createMatrix = ( rows:number, columns:number,value:number=0):number[][]=> {
+export const createMatrix = ( rows:number, columns:number,value:number=0):number[][]=> {
   let matrix =[]
   for (let row=0;row<rows;row++){
     matrix[row]=[]
@@ -24,9 +24,4 @@ const createMatrix = ( rows:number, columns:number,value:number=0):number[][]=> 
     }
   }
   return matrix
-}
-
-export default {
-    rotateMatrix,
-    createMatrix
 }

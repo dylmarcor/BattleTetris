@@ -1,12 +1,13 @@
 import React from 'react'
-import {Settings} from './Settings'
-import {Block} from './Block'
+import Settings from '../Settings'
+import Block from '../Block/Block'
 
-type Props = {
-  matrix:number[][],
-  settings:typeof settings,
-}
-const Board = (props:Props) => {
+// type Props = {
+//   matrix:number[][],
+//   settings:typeof settings,
+// }
+
+const Board = (props) => {
   
   const style ={
     width: props.settings.columns*(props.settings.blockSize+(2*props.settings.blockBorderWidth)+ 2*props.settings.offset ),
@@ -28,7 +29,7 @@ const Board = (props:Props) => {
                       content={content}
                       settings={props.settings}
                       backgroundColor={content !== 0 
-                        ? props.settings.tetrominoesColors[content - 1]
+                        ? props.settings.tetrisblockColors[content - 1]
                         : props.settings.boardColor
                       }
                   />

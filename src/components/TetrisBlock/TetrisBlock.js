@@ -1,17 +1,8 @@
 //@flow
 import React from 'react'
-import {Block} from '../Block/Block'
-import {Settings} from '../Settings'
+import Block from '../Block/Block'
+import Settings from '../Settings'
 import './TetrisBlock.css'
-
-type Props = {
-  settings: typeof settings,
-  column: number,
-  row: number,
-  index: number,
-  matrix: number[][],
-  angle: number,
-}
 
 const TetrisBlock = (props:Props) => {
   const totalCell=props.settings.blockSize+2*props.settings.offset+2*props.settings.blockBorderWidth

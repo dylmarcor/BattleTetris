@@ -12,11 +12,12 @@ const Controls = (props) => {
                 }
     
     return (
-        <div style=({display:'flex',justifyContent:'space-between',width:props.width})>
-            <button style=({button} onKeyDown={props.moveDown})>⇣</button>
-            <button style=({button} onKeyDown={props.rotate})>⤾</button>
-            <button style=({button} onKeyDown={props.moveRight})>⇢</button>
-            <button style=({button} onKeyDown={props.moveUp})>⇡</button>
+        <div style={{display:'flex'},{justifyContent:'space-between'},{width:props.width}}>
+            <button style={button} onKeyDown={props.moveDown}>⇣</button>
+            <button style={button} onKeyDown={props.rotate}>⤾</button>
+            <button style={button} onKeyDown={props.moveRight}>⇢</button>
+            <button style={button} onKeyDown={props.moveUp}>⇡</button>
+        </div>
     )
 }
 

@@ -1,15 +1,15 @@
 import {rotateMatrix} from '../components/Helper'
-import {Settings} from '../components/Settings'
+import Settings from '../components/Settings'
 
-type Direction = 'LEFT' | 'RIGHT' | 'DOWN' | 'UP'
-type Rotation = 'LEFT' | 'RIGHT'
+let Direction = 'LEFT' | 'RIGHT' | 'DOWN' | 'UP'
+let Rotation = 'LEFT' | 'RIGHT'
 
 class TetrisBlockModel {
   constructor(column, row, index) {
     this.matrix = TetrisBlockModel.getTetrisBlockArray()[index]
     this.row = row
     this.column = column
-    this.name = name
+    // this.name = name
   }
   static getTetrisBlockArray() {
     return [
@@ -57,14 +57,14 @@ class TetrisBlockModel {
     return this.getTetrisBlockArray().length
   }
   
-  move(direction:Direction) {
+  move(direction) {
     switch (direction) {
       case 'DOWN':
         this.row = this.row + 1
         break
     }
   }
-  rotate = (rotation:Rotation) => {
+  rotate = (rotation) => {
     const newMatrix = rotateMatrix(this.matrix, rotation)
     return newMatrix
   }
@@ -73,9 +73,9 @@ class TetrisBlockModel {
         for (let column = 0; column < this.matrix.length; column++) {
         if (this.matrix[row][column] !== 0) {
             //board boundaries
-            if (row + this.row >= settings.rows
+            if (row + this.row >= Settings.rows
             || row + this.row <= 0
-            || column + this.column >= settings.columns
+            || column + this.column >= Settings.columns
             || column + this.column < 0) {
                 return true
             }
@@ -88,6 +88,6 @@ class TetrisBlockModel {
     }
     return false
     }
-    }
+}
 
 export default TetrisBlockModel

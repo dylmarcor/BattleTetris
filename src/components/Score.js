@@ -7,7 +7,7 @@ const Score = (props) => {
     const style={
       left: (columns +1) * totalCell,
       top:(rows/2-5) * totalCell,
-      color:'white',
+      color:'black',
       position:'absolute',
       fontSize:(fontSize*1.75) | 0,
       align:'right',
