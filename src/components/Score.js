@@ -1,18 +1,20 @@
 import React from 'react'
 
 const Score = (props) => {
-    const totalCell=props.settings.blockSize+2*props.settings.offset+2*props.settings.blockBorderWidth
-    const { buttonsBackgroundColor, buttonsColor,blockBorderWidth, blockSize,blockOutline,offset,columns,rows} = props.settings
+    const totalCell = props.settings.blockSize+2*props.settings.offset+2*props.settings.blockBorderWidth
+    const {buttonsBackgroundColor, buttonsColor, blockBorderWidth, blockSize,blockOutline,offset,columns,rows} = props.settings
     const fontSize = blockSize + blockBorderWidth + blockOutline + offset
     const style={
-      left: (columns +1) * totalCell,
+      left: (columns + 1) * totalCell,
       top:(rows/2-5) * totalCell,
-      color:'black',
-      position:'absolute',
-      fontSize:(fontSize*1.75) | 0,
-      align:'right',
+      color: 'black',
+      position: 'absolute',
+      fontSize: (fontSize*1.75) | 0,
+      align: 'right',
     }
+
     const divStyle={display:'flex', width:'100%', justifyContent:'space-between'}
+
     return (
       <div style={style}>
         <div style={divStyle}>

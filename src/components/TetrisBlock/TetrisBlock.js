@@ -23,15 +23,15 @@ const TetrisBlock = (props:Props) => {
       {props.matrix.map((row, rowIndex)=>row.map((column, columnIndex)=>{
         const content = props.matrix[rowIndex][columnIndex]
           return <Block
-                      key={"key" + columnIndex + rowIndex}
-                      content={content}
-                      settings={props.settings}
-                      backgroundColor={content !== 0 
-                        ? props.settings.tetrisblockColors[content - 1]
-                        : 'transparent'
-                      }
-                      isTetrisBlock={true}
-                  />
+            key={"key" + columnIndex + rowIndex}
+            content={content}
+            settings={props.settings}
+            backgroundColor={content !== 0 
+              ? props.settings.tetrisblockColors[content - 1]
+              : 'transparent'
+            }
+            isTetrisBlock={true}
+        />
         }))
       }
     </div>

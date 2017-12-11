@@ -13,6 +13,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        {/* <Router> */}
         <NavBar />
             <Tetris settings ={{ blockSize: 4, 
               offset: 2, 
@@ -20,12 +21,12 @@ class App extends Component {
               columns: 10, 
               blockBorderWidth: 5,
               boardColor:'black',
-              blockBorderRadius:'30%',
               intervalTimeInMiliSeconds: 1000,
-              blockOutline:0,
+              blockOutline:1,
               animation:false,
               boardBorderColor:'transparent'
             }} />
+        {/* </Router> */}
       </div>
     );
   }

@@ -1,5 +1,3 @@
-//@flow
-
 import React, {Component} from 'react'
 import TetrisBlock from './TetrisBlock/TetrisBlock'
 import Board from './Board/Board'
@@ -23,7 +21,6 @@ class Tetris extends Component {
       tetrisblockMatrix: tetrisblock.matrix,
       intervalId: 0,
       intervalTime: this.settings.intervalTimeInMiliSeconds,
-      paused: false,
       points: 0,
       completedLines: 0,
       level: 1,
@@ -308,7 +305,6 @@ class Tetris extends Component {
     return (
       <div style={{ color: 'black' }}>
         <div>{this.state.intervalTime}</div>
-        <div>PAUSED: {this.state.paused ? ' true' : ' false'}</div>
         <div>POINTS: {this.state.points}</div>
         <div>LINES: {this.state.completedLines}</div>
         <div>X: {this.state.tetrisblock.column}, Y: {this.state.tetrisblock.row}</div>

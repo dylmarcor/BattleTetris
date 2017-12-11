@@ -4,8 +4,9 @@ import './NavBar.css'
 
 const NavBar = (props) => {
     return (
-        <div>
+        <div className="container">
             <nav>
+                {/* <Link to='/'>Click ME!</Link> */}
                 <h3>Battle Tetris</h3>
             </nav>
         </div>

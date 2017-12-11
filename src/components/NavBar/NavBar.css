@@ -5,3 +5,8 @@ nav {
     position: fixed;
     width: 100%;
 }
+
+button {
+    align-content: left;
+    color: white;
+}
