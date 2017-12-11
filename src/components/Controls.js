@@ -19,3 +19,5 @@ const Controls = (props) => {
             <button style=({button} onKeyDown={props.moveUp})>⇡</button>
     )
 }
+
+export default Controls

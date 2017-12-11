@@ -6,6 +6,7 @@ const NavBar = (props) => {
     return (
         <div>
             <nav>
+                <Link to='/' className='btn btn-left'>Home</Link>
                 <h3>Battle Tetris</h3>
             </nav>
         </div>
