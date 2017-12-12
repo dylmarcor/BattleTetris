@@ -45,7 +45,7 @@ class App extends Component {
         <Switch>
           <Route exact path='/' render={() => 
             <Tetris 
-              // user={this.state.user}
+              user={this.props.user}
               settings={{ blockSize: 4, 
               offset: 2, 
               rows: 20, 
@@ -61,8 +61,11 @@ class App extends Component {
           <Route exact path='/help' render={() =>
             <Help />
           }/>
-          <Route exact path='/login' render={() =>
-            <LoginPage />  
+          <Route exact path='/login' render={(props) =>
+            <LoginPage
+            {...props}
+            handleLogin={this.handleLogin}
+            />  
           }/>
           <Route exact path='/signup' render={(props) => 
               <SignupPage 

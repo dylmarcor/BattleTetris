@@ -1,6 +1,5 @@
 
 import React from 'react'
-import './Block.css'
 
 const Block = (props) => {
   const {blockBorderRadius, blockSize, offset, boardBorderColor,  

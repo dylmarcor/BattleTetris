@@ -4,7 +4,7 @@ import Block from '../Block/Block'
 import Settings from '../Settings'
 import './TetrisBlock.css'
 
-const TetrisBlock = (props:Props) => {
+const TetrisBlock = (props) => {
   const totalCell=props.settings.blockSize+2*props.settings.offset+2*props.settings.blockBorderWidth
   const style ={
     width: props.matrix.length* totalCell,

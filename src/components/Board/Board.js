@@ -2,16 +2,11 @@ import React from 'react'
 import Settings from '../Settings'
 import Block from '../Block/Block'
 
-// type Props = {
-//   matrix:number[][],
-//   settings:typeof settings,
-// }
-
 const Board = (props) => {
   
   const style ={
-    width: props.settings.columns*(props.settings.blockSize+(2*props.settings.blockBorderWidth)+ 2*props.settings.offset ),
-    height:props.settings.rows * (props.settings.blockSize+(2*props.settings.blockBorderWidth)+ 2*props.settings.offset),
+    width: props.settings.columns * (props.settings.blockSize+(2*props.settings.blockBorderWidth)+ 2*props.settings.offset ),
+    height: props.settings.rows * (props.settings.blockSize+(2*props.settings.blockBorderWidth)+ 2*props.settings.offset),
     backgroundColor:props.settings.boardColor,
     paddingRight:props.settings.offset,
     paddingTop:props.settings.offset,

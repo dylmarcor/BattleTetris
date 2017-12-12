@@ -6,6 +6,8 @@ const bodyParser = require('body-parser')
 require('dotenv').config()
 require('./config/db')
 
+app.use(require('./config/auth'))
+
 const app = express()
 
 app.use(logger('dev'))

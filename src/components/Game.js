@@ -22,10 +22,9 @@ class Tetris extends Component {
       intervalTime: this.settings.intervalTimeInMiliSeconds,
       points: 0,
       completedLines: 0,
-      level: 1,
-      
       rotationAngle: 0,
       animation: this.settings.animation,
+      user: this.props.user
     }
 
   }
@@ -41,6 +40,7 @@ class Tetris extends Component {
     const tetrisblockArray = new Array(numberOfTetrisBlocks)
       .fill(null)
       .map(spot => Math.random() * numberOfTetrisBlocks | 0)
+      console.log(tetrisblockArray)
     return tetrisblockArray
   }
 
@@ -66,7 +66,7 @@ class Tetris extends Component {
     const tetrisblockMatrix = newTetrisBlock.matrix
     tetrisblockArray.push(Math.random() * TetrisBlockModel.getNumberOfTetrisBlocks() | 0)
     this.setState({ tetrisblockArray, tetrisblockMatrix, rotationAngle: 0 })
-
+    console.log(tetrisblockMatrix)
     return newTetrisBlock
   }
   getFreeBottomRow = () => {
@@ -147,6 +147,7 @@ class Tetris extends Component {
   }
   handleClick = (event, index) => {
     const newBoard = this.state.boardMatrix.slice()
+    console.log(newBoard)
     const content = newBoard[index.row][index.column] !== 0
       ? [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
       : [0, 0, 0, 0, 0, 2, 2, 2, 0, 0]
@@ -229,7 +230,7 @@ class Tetris extends Component {
         }
       }
       ))
-    this.setState({ boardMatrix, animation: false })
+    this.setState({boardMatrix, animation: false })
   }
 
   updatePoints = (completedLines) => {
@@ -270,9 +271,7 @@ class Tetris extends Component {
   }
 
   changeInterval = () => {
-    const intervalDecrement = this.state.intervalTime <= 500
-      ? 0
-      : 100
+    const intervalDecrement = this.state.intervalTime <= 500 ? 0 : 100
     this.setState((prev) => ({ intervalTime: prev.intervalTime - intervalDecrement }))
   }
 
@@ -343,7 +342,7 @@ class Tetris extends Component {
               angle={0}
             />
             <Score
-              row={5}
+              row={6}
               column={11}
               settings={this.settings}
               points={this.state.points}
