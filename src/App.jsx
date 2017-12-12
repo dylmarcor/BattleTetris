@@ -15,6 +15,20 @@ class App extends Component {
     super(props)
   }
 
+  /* User Methods */
+
+  handleLogin = () => {
+    this.setState({user: userService.getUser()});
+  }
+
+  handleLogout = () => {
+    userService.logout();
+    this.setState({user: null});
+  }
+
+  handleSignup = () => {
+    this.setState({user: userService.getUser()});
+  }
 
 
   /* Life Cycle Methods */
@@ -32,7 +46,7 @@ class App extends Component {
         <Switch>
           <Route exact path='/' render={() => 
             <Tetris 
-              user={this.state.user}
+              // user={this.state.user}
               settings={{ blockSize: 4, 
               offset: 2, 
               rows: 20, 

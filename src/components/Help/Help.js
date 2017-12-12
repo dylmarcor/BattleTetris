@@ -6,7 +6,7 @@ const Help = (props) => {
     return (
         <div>
             <div class="help">
-            <p>Hello</p>
+                <p>Hello</p>
             </div>
         </div>
     )
