@@ -5,10 +5,21 @@ import './App.css';
 import Tetris from './components/Game'
 import NavBar from './components/NavBar/NavBar'
 import Help from './components/Help/Help'
+import userService from './utils/userService'
+import LoginPage from './components/LoginPage/LoginPage'
 
 class App extends Component {
   constructor(props) {
     super(props)
+  }
+
+
+
+  /* Life Cycle Methods */
+
+  componentDidMount() {
+    let user = userService.getUser();
+    this.setState({user});
   }
 
   render() {
@@ -32,6 +43,9 @@ class App extends Component {
           }/>
           <Route exact path='/help' render={() =>
             <Help />
+          }/>
+          <Route exact path='/login' render={() =>
+            <LoginPage />  
           }/>
         </Switch>
       </Router>
