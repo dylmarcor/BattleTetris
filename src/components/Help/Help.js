@@ -4,8 +4,10 @@ import './Help.css'
 
 const Help = (props) => {
     return (
-        <div style={{color:'black'}}>
+        <div>
+            <div class="help">
             <p>Hello</p>
+            </div>
         </div>
     )
 }
