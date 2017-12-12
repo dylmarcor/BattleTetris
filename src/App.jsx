@@ -42,7 +42,6 @@ class App extends Component {
     return (
       <div className="App">
       <NavBar />
-      <Router>
         <Switch>
           <Route exact path='/' render={() => 
             <Tetris 
@@ -78,7 +77,6 @@ class App extends Component {
                 <Redirect to='/login' />
             )} />
         </Switch>
-      </Router>
     </div>
     );
   }
