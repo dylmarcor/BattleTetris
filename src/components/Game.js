@@ -193,8 +193,8 @@ class Tetris extends Component {
     this.state.boardMatrix.forEach((row, rowIndex) =>
       (row.some(column =>
         column === 0)
-        ? null //some elements are 0, so it's not empty
-        : linesArray.push(rowIndex) //none element is 0, so it's full
+        ? null // Some elements are 0, so it's not empty
+        : linesArray.push(rowIndex) // No element is 0, so it's full
       ))
     return linesArray
   }

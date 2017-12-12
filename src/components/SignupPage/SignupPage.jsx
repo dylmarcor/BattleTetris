@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import SignupForm from '../../components/SignupForm/SignupForm';
-import './SignupPage.css';
+import React, {Component} from 'react'
+import SignupForm from '../SignupForm/SignupForm'
+import './SignupPage.css'
 
 class SignupPage extends Component {
   constructor(props) {
@@ -21,8 +21,8 @@ class SignupPage extends Component {
         />
         <p>{this.state.message}</p>
       </div>
-    );
+    )
   }
-};
+}
 
-export default SignupPage;
+export default SignupPage 

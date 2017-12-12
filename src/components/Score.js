@@ -25,10 +25,6 @@ const Score = (props) => {
           <span>LINES:&nbsp;</span>
           <span style={{color:'gray'}}>{props.lines}</span>
         </div>
-        <div style={divStyle}>
-          <span>LEVEL:&nbsp;</span>
-          <span style={{color:'gray'}}>{props.level}</span>
-        </div>
       </div>
     )
 }

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Switch, Route, BrowserRouter as Router} from 'react-router-dom';
+import {Switch, Redirect, Route, BrowserRouter as Router} from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 import Tetris from './components/Game'
@@ -7,6 +7,8 @@ import NavBar from './components/NavBar/NavBar'
 import Help from './components/Help/Help'
 import userService from './utils/userService'
 import LoginPage from './components/LoginPage/LoginPage'
+import TopScoresPage from './components/TopScoresPage/TopScoresPage'
+import SignupPage from './components/SignupPage/SignupPage'
 
 class App extends Component {
   constructor(props) {
@@ -29,7 +31,9 @@ class App extends Component {
       <Router>
         <Switch>
           <Route exact path='/' render={() => 
-            <Tetris settings={{ blockSize: 4, 
+            <Tetris 
+              user={this.state.user}
+              settings={{ blockSize: 4, 
               offset: 2, 
               rows: 20, 
               columns: 10, 
@@ -47,6 +51,18 @@ class App extends Component {
           <Route exact path='/login' render={() =>
             <LoginPage />  
           }/>
+          <Route exact path='/signup' render={(props) => 
+              <SignupPage 
+                {...props}
+                handleSignup={this.handleSignup}
+              />
+            }/>
+          <Route exact path='/topscores' render={() => (
+              userService.getUser() ? 
+                <TopScoresPage />
+                :
+                <Redirect to='/login' />
+            )} />
         </Switch>
       </Router>
     </div>
