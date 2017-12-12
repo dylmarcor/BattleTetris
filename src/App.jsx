@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-// import {Switch, Route, Router} from 'react-router-dom';
+import {Switch, Route, BrowserRouter as Router} from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 import Tetris from './components/Game'
 import NavBar from './components/NavBar/NavBar'
+import Help from './components/Help/Help'
 
 class App extends Component {
   constructor(props) {
@@ -13,9 +14,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* <Router> */}
-        <NavBar />
-            <Tetris settings ={{ blockSize: 4, 
+      <NavBar />
+      <Router>
+        <Switch>
+          <Route exact path='/' render={() => 
+            <Tetris settings={{ blockSize: 4, 
               offset: 2, 
               rows: 20, 
               columns: 10, 
@@ -26,8 +29,13 @@ class App extends Component {
               animation:false,
               boardBorderColor:'transparent'
             }} />
-        {/* </Router> */}
-      </div>
+          }/>
+          <Route exact path='/help' render={() =>
+            <Help />
+          }/>
+        </Switch>
+      </Router>
+    </div>
     );
   }
 }

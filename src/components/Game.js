@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import TetrisBlock from './TetrisBlock/TetrisBlock'
 import Board from './Board/Board'
 import Block from './Block/Block'
-import Controls from './Controls'
 import Score from './Score'
 import Settings from './Settings'
 import {createMatrix, rotateMatrix} from './Helper'
@@ -24,6 +23,7 @@ class Tetris extends Component {
       points: 0,
       completedLines: 0,
       level: 1,
+      
       rotationAngle: 0,
       animation: this.settings.animation,
     }
@@ -323,9 +323,7 @@ class Tetris extends Component {
 
     return (
       <div style={style}>
-        
-        <div >
-          
+        <div>
           <Board settings={this.settings} matrix={this.state.boardMatrix}>
             <TetrisBlock
               {...this.state.tetrisblock}
@@ -334,9 +332,7 @@ class Tetris extends Component {
               settings={this.settings}
               angle={this.state.rotationAngle}
               animation={this.settings.animation}
-
               />
-             
             <TetrisBlock
               {...this.state.tetrisblock}
               matrix={TetrisBlockModel.getTetrisBlockArray()[this.state.tetrisblockArray[0]]}
@@ -354,15 +350,8 @@ class Tetris extends Component {
               level = {this.state.level}
               lines = {this.state.completedLines}
             />
-          </Board>
-          <Controls
-            settings = {this.settings}
-            moveLeft={()=>this.moveTetrisBlock('LEFT')}
-            moveRight={()=>this.moveTetrisBlock('RIGHT')}
-            rotate ={()=>this.rotateTetrisBlock()}
-            moveDown={()=>this.moveTetrrisBlock('DOWN')}
-          />
-        </div> 
+            </Board>
+          </div>
       </div>
     )
   }
