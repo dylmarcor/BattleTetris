@@ -13,6 +13,9 @@ import SignupPage from './components/SignupPage/SignupPage'
 class App extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      user: {}
+    }
   }
 
   /* User Methods */
@@ -36,16 +39,17 @@ class App extends Component {
   componentDidMount() {
     let user = userService.getUser();
     this.setState({user});
+    console.log({user})
   }
 
   render() {
     return (
       <div className="App">
-      <NavBar user={this.props.user} handleLogout={this.props.handleLogout}/>
+      <NavBar user={this.state.user} handleLogout={this.state.handleLogout}/>
         <Switch>
           <Route exact path='/' render={() => 
             <Tetris 
-              user={this.props.user}
+              user={this.state.user}
               settings={{ blockSize: 4, 
               offset: 2, 
               rows: 20, 
@@ -65,19 +69,19 @@ class App extends Component {
             <LoginPage
             {...props}
             handleLogin={this.handleLogin}
+            user={this.state.user}
             />  
           }/>
           <Route exact path='/signup' render={(props) => 
               <SignupPage 
                 {...props}
                 handleSignup={this.handleSignup}
+                user={this.state.user}
               />
             }/>
           <Route exact path='/topscores' render={() => (
               userService.getUser() ? 
-                <TopScoresPage />
-                :
-                <Redirect to='/login' />
+                <TopScoresPage /> : <Redirect to='/login' />
             )} />
         </Switch>
     </div>

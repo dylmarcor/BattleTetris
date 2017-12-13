@@ -10,6 +10,7 @@ import TetrisBlockModel from '../models/TetrisBlockModel'
 class Tetris extends Component {
   constructor(props) {
     super(props)
+    console.log(this.props.user)
     this.settings = Object.assign({}, Settings, props.settings)
     this.handleKeyboard()
     const tetrisblock = new TetrisBlockModel(3, 0, Math.random() * 7 | 0)
@@ -40,7 +41,6 @@ class Tetris extends Component {
     const tetrisblockArray = new Array(numberOfTetrisBlocks)
       .fill(null)
       .map(spot => Math.random() * numberOfTetrisBlocks | 0)
-      console.log(tetrisblockArray)
     return tetrisblockArray
   }
 
@@ -66,7 +66,6 @@ class Tetris extends Component {
     const tetrisblockMatrix = newTetrisBlock.matrix
     tetrisblockArray.push(Math.random() * TetrisBlockModel.getNumberOfTetrisBlocks() | 0)
     this.setState({ tetrisblockArray, tetrisblockMatrix, rotationAngle: 0 })
-    console.log(tetrisblockMatrix)
     return newTetrisBlock
   }
   getFreeBottomRow = () => {
@@ -147,7 +146,6 @@ class Tetris extends Component {
   }
   handleClick = (event, index) => {
     const newBoard = this.state.boardMatrix.slice()
-    console.log(newBoard)
     const content = newBoard[index.row][index.column] !== 0
       ? [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
       : [0, 0, 0, 0, 0, 2, 2, 2, 0, 0]
@@ -347,6 +345,7 @@ class Tetris extends Component {
               settings = {this.settings}
               points = {this.state.points}
               lines = {this.state.completedLines}
+              user = {this.state.user}
             />
             </Board>
           </div>
