@@ -6,6 +6,8 @@ import Score from './Score'
 import Settings from './Settings'
 import {createMatrix, rotateMatrix} from './Helper'
 import TetrisBlockModel from '../models/TetrisBlockModel'
+import GameOver from '../components/GameOver/GameOver'
+import { browserHistory } from 'react-router'
 
 class Tetris extends Component {
   constructor(props) {
@@ -25,7 +27,8 @@ class Tetris extends Component {
       completedLines: 0,
       rotationAngle: 0,
       animation: this.settings.animation,
-      user: this.props.user
+      user: this.props.user,
+      gameOver: false
     }
 
   }
@@ -104,16 +107,18 @@ class Tetris extends Component {
     }
     tetrisblock.row += rowAdvance
     tetrisblock.column += columnAdvance
-    //If collided, move back
+
+    // If collided, move back
     if (tetrisblock.collidesWith(boardMatrix)) {
 
       tetrisblock.row -= rowAdvance
       tetrisblock.column -= columnAdvance
       mustUpdate = false
     }
-    //restores animation
+
+    // restores animation
     if (mustUpdate) {
-      this.setState({ tetrisblock, animation: true })
+      this.setState({tetrisblock, animation: true})
     }
 
   }
@@ -211,7 +216,8 @@ class Tetris extends Component {
 
   gameOver = () => {
     const boardMatrix = this.initializeBoard()
-    this.setState({ boardMatrix })
+    this.setState({boardMatrix, animation: false, gameOver: true})
+    this.renderGameOver()
   }
 
   insertTetrisBlockInBoard = () => {
@@ -235,7 +241,7 @@ class Tetris extends Component {
     let {points} = this.state
     let extraPoints = 0
     for (let i = 0; i < completedLines; i++) {
-      extraPoints += (i * 200)
+      extraPoints += (i * 10)
     }
     points += extraPoints + this.settings.pointsPerLine * completedLines
     this.setState((prevState) => ({ points, completedLines: prevState.completedLines + completedLines }))
@@ -288,26 +294,25 @@ class Tetris extends Component {
         this.updatePoints(completedLinesArray.length)
       } else {
         if (this.state.boardMatrix[1].some(x => x !== 0)) {
-          this.gameOver()
+          return this.gameOver()
         }
       }
       this.changeInterval()
     }
-
     const intervalId = setTimeout(() => this.mainLoop(), this.state.intervalTime)
-    this.setState({ tetrisblock, intervalId })
+    this.setState({tetrisblock, intervalId})
   }
 
-  renderScore = () => {
-    return (
-      <div style={{ color: 'black' }}>
-        <div>{this.state.intervalTime}</div>
-        <div>POINTS: {this.state.points}</div>
-        <div>LINES: {this.state.completedLines}</div>
-        <div>X: {this.state.tetrisblock.column}, Y: {this.state.tetrisblock.row}</div>
-      </div>
-    )
+  renderGameOver = (props) => {
+    const style = {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      zIndex: 0,
+      height: '100vh',
+    }
   }
+  
 
   render() {
     const style = {
@@ -317,8 +322,9 @@ class Tetris extends Component {
       zIndex: 0,
       height: '100vh',
     }
-
-    return (
+    let game = (this.state.gameOver) ?
+      <GameOver />
+      :
       <div style={style}>
         <div>
           <Board settings={this.settings} matrix={this.state.boardMatrix}>
@@ -349,6 +355,10 @@ class Tetris extends Component {
             />
             </Board>
           </div>
+      </div>
+    return (
+      <div>
+        {game}
       </div>
     )
   }

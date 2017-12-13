@@ -10,6 +10,7 @@ import LoginPage from './components/LoginPage/LoginPage'
 import TopScoresPage from './components/TopScoresPage/TopScoresPage'
 import SignupPage from './components/SignupPage/SignupPage'
 import WelcomePage from './components/WelcomePage/WelcomePage'
+import GameOver from './components/GameOver/GameOver'
 
 class App extends Component {
   constructor(props) {
@@ -50,7 +51,8 @@ class App extends Component {
           <Route exact path='/' render={() =>
             <WelcomePage />}
           />
-          <Route exact path='/game' render={() => 
+          <Route exact path='/game' render={(props) => 
+            userService.getUser() ?
             <Tetris 
               user={this.state.user}
               handleLogout={this.handleLogout}
@@ -64,7 +66,7 @@ class App extends Component {
               blockOutline:1,
               animation:false,
               boardBorderColor:'transparent'
-            }} />
+            }} /> : <Redirect to='/login' />
           }/>
           <Route exact path='/help' render={() =>
             <Help />
@@ -83,10 +85,13 @@ class App extends Component {
                 user={this.state.user}
               />
             }/>
-          <Route exact path='/topscores' render={() => (
+          <Route exact path='/topscores' render={(props) => (
               userService.getUser() ? 
-                <TopScoresPage /> : <Redirect to='/login' />
+                <TopScoresPage user={this.state.user}/> : <Redirect to='/login' />
             )} />
+          <Route exact path='/gameover' render={(props) => (
+            <GameOver />
+          )} />
         </Switch>
     </div>
     );
