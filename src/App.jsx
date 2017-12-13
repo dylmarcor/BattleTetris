@@ -41,7 +41,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <NavBar />
+      <NavBar user={this.props.user} handleLogout={this.props.handleLogout}/>
         <Switch>
           <Route exact path='/' render={() => 
             <Tetris 

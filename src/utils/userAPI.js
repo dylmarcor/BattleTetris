@@ -10,7 +10,8 @@ function signup(user) {
     if (res.ok) return res.json();
     throw new Error('Email already taken!');
   })
-  .then(({token}) => token);
+  .then(({token}) => token)
+  .catch(err => console.log(err));
 }
 
 function login(creds) {
