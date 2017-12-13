@@ -110,12 +110,10 @@ class Tetris extends Component {
 
     // If collided, move back
     if (tetrisblock.collidesWith(boardMatrix)) {
-
       tetrisblock.row -= rowAdvance
       tetrisblock.column -= columnAdvance
       mustUpdate = false
     }
-
     // restores animation
     if (mustUpdate) {
       this.setState({tetrisblock, animation: true})
@@ -180,9 +178,6 @@ class Tetris extends Component {
         case key.rotate:
           this.rotateTetrisBlock('RIGHT')
           break
-        case key.pause:
-          this.setState((prevState) => ({ paused: prevState.paused ? false : true }))
-          return
         case key.bottom:
           this.moveTetrisBlock('BOTTOM')
           break
@@ -217,7 +212,6 @@ class Tetris extends Component {
   gameOver = () => {
     const boardMatrix = this.initializeBoard()
     this.setState({boardMatrix, animation: false, gameOver: true})
-    this.renderGameOver()
   }
 
   insertTetrisBlockInBoard = () => {
@@ -302,17 +296,6 @@ class Tetris extends Component {
     const intervalId = setTimeout(() => this.mainLoop(), this.state.intervalTime)
     this.setState({tetrisblock, intervalId})
   }
-
-  renderGameOver = (props) => {
-    const style = {
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      zIndex: 0,
-      height: '100vh',
-    }
-  }
-  
 
   render() {
     const style = {

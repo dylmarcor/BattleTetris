@@ -5,7 +5,7 @@ import './GameOver.css'
 const GameOver = (props) => {
     return (
         <div className="gameover-container">
-            <div>Game Over!</div>
+            <div className="gameover-title">Game Over!</div>
             <div className="home">
                 <Link to='/'>Go Home</Link>
             </div>
