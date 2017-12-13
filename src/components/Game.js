@@ -326,27 +326,26 @@ class Tetris extends Component {
           <Board settings={this.settings} matrix={this.state.boardMatrix}>
             <TetrisBlock
               {...this.state.tetrisblock}
-              matrix={this.state.tetrisblockMatrix}
-              index={this.state.tetrisblockArray[0]}
-              settings={this.settings}
-              angle={this.state.rotationAngle}
-              animation={this.settings.animation}
+              matrix = {this.state.tetrisblockMatrix}
+              index = {this.state.tetrisblockArray[0]}
+              settings = {this.settings}
+              angle = {this.state.rotationAngle}
+              animation = {this.settings.animation}
               />
             <TetrisBlock
               {...this.state.tetrisblock}
-              matrix={TetrisBlockModel.getTetrisBlockArray()[this.state.tetrisblockArray[0]]}
-              row={10}
-              column={11}
-              index={this.state.tetrisblockArray[0]}
-              settings={this.settings}
-              angle={0}
+              matrix = {TetrisBlockModel.getTetrisBlockArray()[this.state.tetrisblockArray[0]]}
+              row = {10}
+              column = {11}
+              index = {this.state.tetrisblockArray[0]}
+              settings = {this.settings}
+              angle = {0}
             />
             <Score
-              row={6}
-              column={11}
-              settings={this.settings}
-              points={this.state.points}
-              level = {this.state.level}
+              row = {6}
+              column = {11}
+              settings = {this.settings}
+              points = {this.state.points}
               lines = {this.state.completedLines}
             />
             </Board>

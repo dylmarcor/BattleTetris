@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Switch, Redirect, Route, BrowserRouter as Router} from 'react-router-dom';
-import logo from './logo.svg';
+import icon from './icon.svg';
 import './App.css';
 import Tetris from './components/Game'
 import NavBar from './components/NavBar/NavBar'

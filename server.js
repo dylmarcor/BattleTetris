@@ -2,14 +2,14 @@ const express = require('express')
 const path = require('path')
 const logger = require('morgan')
 const bodyParser = require('body-parser')
+// const favicon = require('serve-favicon')
 
 require('dotenv').config()
 require('./config/db')
 
-app.use(require('./config/auth'))
-
 const app = express()
 
+app.use(require('./config/auth'))
 app.use(logger('dev'))
 
 // app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
