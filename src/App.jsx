@@ -39,17 +39,17 @@ class App extends Component {
   componentDidMount() {
     let user = userService.getUser();
     this.setState({user});
-    console.log({user})
   }
 
   render() {
     return (
       <div className="App">
-      <NavBar user={this.state.user} handleLogout={this.state.handleLogout}/>
+      <NavBar user={this.state.user} handleLogout={this.handleLogout}/>
         <Switch>
           <Route exact path='/' render={() => 
             <Tetris 
               user={this.state.user}
+              handleLogout={this.handleLogout}
               settings={{ blockSize: 4, 
               offset: 2, 
               rows: 20, 

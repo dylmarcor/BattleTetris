@@ -14,7 +14,7 @@ const NavBar = (props) => {
                     <h3 className="dropbtn">Menu</h3>
                     <div className="dropdown-content">
                         <Link to='/signup'>Sign Up</Link>
-                        <Link to='/'>Log Out</Link>
+                        <Link to='/' onClick={props.handleLogout}>Log Out</Link>
                         <Link to='/topscores'>High Scores</Link>
                         <Link to='/help'>Help</Link>
                     </div>
