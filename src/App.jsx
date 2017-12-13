@@ -9,6 +9,7 @@ import userService from './utils/userService'
 import LoginPage from './components/LoginPage/LoginPage'
 import TopScoresPage from './components/TopScoresPage/TopScoresPage'
 import SignupPage from './components/SignupPage/SignupPage'
+import WelcomePage from './components/WelcomePage/WelcomePage'
 
 class App extends Component {
   constructor(props) {
@@ -46,7 +47,10 @@ class App extends Component {
       <div className="App">
       <NavBar user={this.state.user} handleLogout={this.handleLogout}/>
         <Switch>
-          <Route exact path='/' render={() => 
+          <Route exact path='/' render={() =>
+            <WelcomePage />}
+          />
+          <Route exact path='/game' render={() => 
             <Tetris 
               user={this.state.user}
               handleLogout={this.handleLogout}

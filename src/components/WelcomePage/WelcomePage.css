@@ -1,0 +1,12 @@
+.welcome-container {
+    display: flex;
+    position: fixed;
+    justify-content: center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 500px;
+    width: 500px;
+    margin: auto;    
+}

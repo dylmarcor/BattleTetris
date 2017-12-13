@@ -24,7 +24,7 @@ class LoginForm extends Component {
     userService.login(this.state)
     .then(() => {
       this.props.handleLogin();
-      this.props.history.push('/');
+      this.props.history.push('/game');
     })
     .catch(err => alert('Invalid credentials'));
   }
