@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var User = require('../../src/models/user');
+var User = require('../../src/models/User');
 var usersCtrl = require('./../../controllers/users');
 
 /*---------- Public Routes ----------*/
