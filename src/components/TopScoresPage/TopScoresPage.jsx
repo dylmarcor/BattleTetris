@@ -21,7 +21,6 @@ class TopScoresPage extends Component {
       <div className='TopScoresPage'>
         <header className="header-footer">Top Scores</header>
         <Link to='/'>RETURN</Link><br />
-        <ScoresTable scores={this.state.scores} />
       </div>
     );
   }

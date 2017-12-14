@@ -51,6 +51,9 @@ class LoginForm extends Component {
             </div>
           </div>
         </form>
+        <div className="nouser">
+          <p>Not a user??&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Link to='/signup' className="nouser-link">Sign up</Link></p>
+        </div>
       </div>
     );
   }
