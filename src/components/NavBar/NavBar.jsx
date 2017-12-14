@@ -1,14 +1,13 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import './NavBar.css'
-import {icon} from '../../icon.svg'
+import {tetris} from '../../tetris.svg'
 
 const NavBar = (props) => {
-    console.log(props.user)
     let nav = props.user ?
         <div className="container">
             <nav className="nav-container">
-                <h3 src={icon} alt="My Logo" className="logo">Logo</h3>
+                <h3 className="logo">BT</h3>
                 <h3 className="title"><Link to='/game' style={{textDecoration: 'none', color:'white'}}>Battle Tetris</Link></h3>
                 <div className="dropdown">
                     <h3 className="dropbtn">Menu</h3>
@@ -24,7 +23,7 @@ const NavBar = (props) => {
         :
         <div className="container">
             <nav className="nav-container">
-                <h3 src={icon} alt="My Logo" className="logo">Logo</h3>
+                <h3 className="logo">BT</h3>
                 <h3 className="title"><Link to='/' style={{textDecoration: 'none', color:'white'}}>Battle Tetris</Link></h3>
                 <div className="dropdown">
                     <h3 className="dropbtn">Menu</h3>

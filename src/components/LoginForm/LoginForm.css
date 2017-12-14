@@ -1,6 +1,8 @@
 .login-container {
     display: flex;
     position: fixed;
+    flex-wrap: wrap;
+    justify-content: space-between;
     top: 0;
     bottom: 0;
     left: 0;
@@ -8,4 +10,17 @@
     height: 500px;
     width: 500px;
     margin: auto
+}
+
+.login {
+    font-size: .5em;
+}
+
+.login-cancel {
+    text-decoration: none;
+    color: black;
+}
+
+.login-cancel:hover {
+    text-decoration: underline;
 }

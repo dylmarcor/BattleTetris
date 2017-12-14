@@ -1,7 +1,9 @@
 .welcome-container {
     display: flex;
     position: fixed;
+    flex-flow: wrap;
     justify-content: center;
+    align-items: center;
     top: 0;
     bottom: 0;
     left: 0;
@@ -9,4 +11,13 @@
     height: 500px;
     width: 500px;
     margin: auto;    
+}
+
+.login-link {
+    text-decoration: none;
+    color: black;
+}
+
+.login-link:hover {
+    text-decoration: underline;
 }

@@ -49,7 +49,7 @@ class App extends Component {
       <NavBar user={this.state.user} handleLogout={this.handleLogout}/>
         <Switch>
           <Route exact path='/' render={() =>
-            <WelcomePage />}
+            <WelcomePage user={this.state.user}/>}
           />
           <Route exact path='/game' render={(props) => 
             userService.getUser() ?

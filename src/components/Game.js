@@ -12,7 +12,6 @@ import { browserHistory } from 'react-router'
 class Tetris extends Component {
   constructor(props) {
     super(props)
-    console.log(this.props.user)
     this.settings = Object.assign({}, Settings, props.settings)
     this.handleKeyboard()
     const tetrisblock = new TetrisBlockModel(3, 0, Math.random() * 7 | 0)
@@ -55,10 +54,10 @@ class Tetris extends Component {
         const columnIndex = (this.state.boardMatrix[0].length / 2 - matrix.length / 2) | 0
         finalRow = 0 - rowIndex
         finalColumn = columnIndex
-        return { row: finalRow, column: finalColumn }
+        return {row: finalRow, column: finalColumn}
       }
     }
-    return { row: 0, column: 0 }
+    return {row: 0, column: 0}
   }
 
   getNewTetrisBlock = () => {

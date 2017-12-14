@@ -41,7 +41,7 @@ class SignupForm extends Component {
   render() {
     return (
       <div className="main">
-        <header className="container-signup">Sign Up</header>&nbsp;&nbsp;&nbsp;&nbsp;
+        <h3 className="container-signup">Sign Up</h3>&nbsp;&nbsp;&nbsp;&nbsp;
         <form className="form-signup" onSubmit={this.handleSubmit} >
           <div className="form-group">
             <div className="name">
@@ -63,10 +63,10 @@ class SignupForm extends Component {
               <input type="password" className="form-control" placeholder="Confirm Password" value={this.state.passwordConf} onChange={(e) => this.handleChange('passwordConf', e)} />
             </div>
           </div>
-          <div className="form-group">
+          <div className="login">
             <div className="confirm-button">
               <button className="btn btn-default" disabled={this.isFormInvalid()}>Sign Up</button>&nbsp;&nbsp;
-              <Link to='/'>Cancel</Link>
+              <Link to='/' className="signup-button">Cancel</Link>
             </div>
           </div>
         </form>
