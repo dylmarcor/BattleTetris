@@ -306,7 +306,9 @@ class Tetris extends Component {
       height: '100vh',
     }
     let game = (this.state.gameOver) ?
-      <GameOver />
+      <GameOver 
+        points = {this.state.points} 
+      />
       :
       <div style={style}>
         <div>

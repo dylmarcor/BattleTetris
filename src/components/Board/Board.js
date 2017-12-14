@@ -4,7 +4,7 @@ import Block from '../Block/Block'
 
 const Board = (props) => {
   
-  const style ={
+  const style = {
     width: props.settings.columns * (props.settings.blockSize+(2*props.settings.blockBorderWidth)+ 2*props.settings.offset ),
     height: props.settings.rows * (props.settings.blockSize+(2*props.settings.blockBorderWidth)+ 2*props.settings.offset),
     backgroundColor:props.settings.boardColor,
@@ -17,7 +17,7 @@ const Board = (props) => {
   return (
     <div style={style}>
       {props.children}
-      {props.matrix.map((row, rowIndex)=>row.map((column, columnIndex)=>{
+      {props.matrix.map((row, rowIndex) => row.map((column, columnIndex) => {
         const content = props.matrix[rowIndex][columnIndex]
           return <Block
                       key={"key" + columnIndex + rowIndex}

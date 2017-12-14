@@ -5,7 +5,7 @@ import './GameOver.css'
 const GameOver = (props) => {
     return (
         <div className="gameover-container">
-            <div className="gameover-title">Game Over!</div>
+            <div className="gameover-title">Game Over!<br />Your high score was: {props.points}</div>
             <div className="home">
                 <Link to='/'>Go Home</Link>
             </div>

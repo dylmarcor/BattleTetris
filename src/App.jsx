@@ -87,7 +87,7 @@ class App extends Component {
             }/>
           <Route exact path='/topscores' render={(props) => (
               userService.getUser() ? 
-                <TopScoresPage user={this.state.user}/> : <Redirect to='/login' />
+                <TopScoresPage user={this.state.user} points={this.state.points}/> : <Redirect to='/login' />
             )} />
           <Route exact path='/gameover' render={(props) => (
             <GameOver />
