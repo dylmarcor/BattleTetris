@@ -1,6 +1,9 @@
 {
   "name": "battle-tetris",
   "version": "0.1.0",
+  "engine": {
+	  "node":"10.19.0"
+  },
   "private": true,
   "dependencies": {
     "bcrypt": "^1.0.3",
